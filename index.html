@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forecast2</title>
+    <link rel="stylesheet" href="src/styles.css" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <form class="allforms">
+        <input type="city" placeholder="city" class="cityform" />
+        <input
+          type="submit"
+          value="search"
+          id="btnSearch"
+          class="searchbutton"
+        />
+        <input
+          type="submit"
+          value="current"
+          id="btnCurrent"
+          class="searchbutton"
+        />
+        <input type="submit" value="F" class="buttons" />
+        <input type="submit" value="C" class="buttons" />
+      </form>
+      <div class="row align-items-center">
+        <div class="col">
+          <h1>Copenhagen</h1>
+          <p class="timeupdate">Monday 10:55</p>
+        </div>
+        <div class="col">
+          <img src="images/cloundy.svg" class="blueimage" />
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col">
+          <h2 class="temperature">11°</h2>
+        </div>
+        <div class="col">
+          <p class="status">
+            Cloudy <br />
+            Humidity: 70%<br />
+            Wind: 20km/h
+          </p>
+        </div>
+      </div>
+      <p class="nextdays">Next 5 days</p>
+      <hr />
+      <div class="card-group">
+        <div class="card text-center">
+          <img src="images/cloundy.svg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">Tue</h5>
+            <p class="card-text">3°/<strong>6°</strong></p>
+          </div>
+        </div>
+        <div class="card text-center">
+          <img src="images/sunny.svg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">Wed</h5>
+            <p class="card-text">2°/<strong>5°</strong></p>
+          </div>
+        </div>
+        <div class="card text-center">
+          <img src="images/sunny.svg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">Thu</h5>
+            <p class="card-text">1°/<strong>5°</strong></p>
+          </div>
+        </div>
+        <div class="card text-center">
+          <img src="images/cloundy.svg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">Fri</h5>
+            <p class="card-text">1°/<strong>4°</strong></p>
+          </div>
+        </div>
+        <div class="card text-center">
+          <img src="images/snowing.svg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">Sat</h5>
+            <p class="card-text">-1°/<strong>3°</strong></p>
+          </div>
+        </div>
+      </div>
+      <p class="identification">Coded by AnaGarcia</p>
+    </div>
+    <script src="src/javascript.js"></script>
+  </body>
+</html>
