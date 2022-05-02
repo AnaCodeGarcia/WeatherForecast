@@ -78,3 +78,7 @@ h1 {
   font-size: 20px;
   color: rgb(75, 153, 121);
 }
+
+.opensource {
+  color: forestgreen;
+}
