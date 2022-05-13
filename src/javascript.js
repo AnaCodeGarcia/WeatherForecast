@@ -29,6 +29,12 @@ function displayWeatherCondition(response) {
   cityElement.innerHTML = city;
   let temperatureElement = document.querySelector("h2");
   temperatureElement.innerHTML = Math.round(temperature) + "º";
+  let iconElement = document.querySelector("#icon");
+  console.log(iconElement);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 
   let weather = response.data.weather[0].main;
   let humidity = response.data.main.humidity;
