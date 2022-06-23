@@ -20,6 +20,9 @@ function currentDayTime() {
 function displayWeatherCondition(response) {
   console.log(response);
   let temperature = response.data.main.temp;
+
+  celsiusTemperature = temperature;
+
   let city = response.data.name;
   let cityElement = document.querySelector("h1");
   cityElement.innerHTML = city;
@@ -75,7 +78,7 @@ function handleCurrent(event) {
 function displayFarenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector(".temperature");
-  let farenheitValue = temperatureElement.innerHTML * (9 / 5) + 32;
+  let farenheitValue = celsiusTemperature * (9 / 5) + 32;
   console.log("Farenheit Temperature: " + farenheitValue);
   temperatureElement.innerHTML = Math.round(farenheitValue);
 }
@@ -83,6 +86,8 @@ function displayFarenheitTemperature(event) {
 let p = document.querySelector("p.timeupdate");
 
 p.innerHTML = currentDayTime();
+
+let celsiusTemperature = null;
 
 let btnSearch = document.querySelector("#btnSearch");
 btnSearch.addEventListener("click", handleSearch);
