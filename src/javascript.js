@@ -76,8 +76,19 @@ function handleCurrent(event) {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
+function displayFarenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector(".temperature");
+  let farenheitValue = temperatureElement.innerHTML * (9 / 5) + 32;
+  console.log("Farenheit Temperature: " + farenheitValue);
+  temperatureElement.innerHTML = Math.round(farenheitValue);
+}
+
 let btnSearch = document.querySelector("#btnSearch");
 btnSearch.addEventListener("click", handleSearch);
 
 let btnCurrent = document.querySelector("#btnCurrent");
 btnCurrent.addEventListener("click", handleCurrent);
+
+let btnFarenheit = document.querySelector("#btnFarenheit");
+btnFarenheit.addEventListener("click", displayFarenheitTemperature);
