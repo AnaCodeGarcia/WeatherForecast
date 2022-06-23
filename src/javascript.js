@@ -1,7 +1,3 @@
-let p = document.querySelector("p.timeupdate");
-
-p.innerHTML = currentDayTime();
-
 function currentDayTime() {
   let now = new Date();
   let days = [
@@ -28,7 +24,7 @@ function displayWeatherCondition(response) {
   let cityElement = document.querySelector("h1");
   cityElement.innerHTML = city;
   let temperatureElement = document.querySelector("h2");
-  temperatureElement.innerHTML = Math.round(temperature) + "º";
+  temperatureElement.innerHTML = Math.round(temperature);
   let iconElement = document.querySelector("#icon");
   console.log(iconElement);
   iconElement.setAttribute(
@@ -84,6 +80,10 @@ function displayFarenheitTemperature(event) {
   temperatureElement.innerHTML = Math.round(farenheitValue);
 }
 
+let p = document.querySelector("p.timeupdate");
+
+p.innerHTML = currentDayTime();
+
 let btnSearch = document.querySelector("#btnSearch");
 btnSearch.addEventListener("click", handleSearch);
 
@@ -92,3 +92,5 @@ btnCurrent.addEventListener("click", handleCurrent);
 
 let btnFarenheit = document.querySelector("#btnFarenheit");
 btnFarenheit.addEventListener("click", displayFarenheitTemperature);
+
+search("Copenhagen");
