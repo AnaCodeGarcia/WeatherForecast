@@ -75,13 +75,13 @@ function handleCurrent(event) {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
-function displayFarenheitTemperature(event) {
+function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector(".temperature");
-  let farenheitValue = celsiusTemperature * (9 / 5) + 32;
-  console.log("Farenheit Temperature: " + farenheitValue);
-  temperatureElement.innerHTML = Math.round(farenheitValue);
-  btnFarenheit.disabled = true;
+  let fahrenheitValue = celsiusTemperature * (9 / 5) + 32;
+  console.log("Fahrenheit Temperature: " + fahrenheitValue);
+  temperatureElement.innerHTML = Math.round(fahrenheitValue);
+  btnFahrenheit.disabled = true;
   btnCelsius.disabled = false;
 }
 
@@ -90,7 +90,7 @@ function displayCelsiusTemperature(event) {
   let temperatureElement = document.querySelector(".temperature");
   console.log("Celsius temperature; " + celsiusTemperature);
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
-  btnFarenheit.disabled = false;
+  btnFahrenheit.disabled = false;
   btnCelsius.disabled = true;
 }
 
@@ -106,8 +106,8 @@ btnSearch.addEventListener("click", handleSearch);
 let btnCurrent = document.querySelector("#btnCurrent");
 btnCurrent.addEventListener("click", handleCurrent);
 
-let btnFarenheit = document.querySelector("#btnFarenheit");
-btnFarenheit.addEventListener("click", displayFarenheitTemperature);
+let btnFahrenheit = document.querySelector("#btnFarenheit");
+btnFahrenheit.addEventListener("click", displayFahrenheitTemperature);
 
 let btnCelsius = document.querySelector("#btnCelsius");
 btnCelsius.addEventListener("click", displayCelsiusTemperature);
