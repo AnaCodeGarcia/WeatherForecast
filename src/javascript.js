@@ -81,6 +81,17 @@ function displayFarenheitTemperature(event) {
   let farenheitValue = celsiusTemperature * (9 / 5) + 32;
   console.log("Farenheit Temperature: " + farenheitValue);
   temperatureElement.innerHTML = Math.round(farenheitValue);
+  btnFarenheit.disabled = true;
+  btnCelsius.disabled = false;
+}
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector(".temperature");
+  console.log("Celsius temperature; " + celsiusTemperature);
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  btnFarenheit.disabled = false;
+  btnCelsius.disabled = true;
 }
 
 let p = document.querySelector("p.timeupdate");
@@ -97,5 +108,8 @@ btnCurrent.addEventListener("click", handleCurrent);
 
 let btnFarenheit = document.querySelector("#btnFarenheit");
 btnFarenheit.addEventListener("click", displayFarenheitTemperature);
+
+let btnCelsius = document.querySelector("#btnCelsius");
+btnCelsius.addEventListener("click", displayCelsiusTemperature);
 
 search("Copenhagen");
