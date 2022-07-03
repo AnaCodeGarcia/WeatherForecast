@@ -16,6 +16,14 @@ function currentDayTime() {
   return `${day} ${hours}:${minutes}`;
 }
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "864f1d5561eb65003352ba542cf51e26";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
 // homework week 5
 function displayWeatherCondition(response) {
   console.log(response);
@@ -46,6 +54,8 @@ function displayWeatherCondition(response) {
     "%<br />Wind: " +
     Math.round(wind) +
     "km/h";
+
+  getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -94,7 +104,9 @@ function displayCelsiusTemperature(event) {
   btnCelsius.disabled = true;
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
+
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHtml = "";
@@ -173,4 +185,3 @@ let btnCelsius = document.querySelector("#btnCelsius");
 btnCelsius.addEventListener("click", displayCelsiusTemperature);
 
 search("Copenhagen");
-displayForecast();
