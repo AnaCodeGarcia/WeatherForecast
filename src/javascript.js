@@ -17,16 +17,13 @@ function currentDayTime() {
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "864f1d5561eb65003352ba542cf51e26";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  console.log(apiUrl);
   axios.get(apiUrl).then(displayForecast);
 }
 
 // homework week 5
 function displayWeatherCondition(response) {
-  console.log(response);
   let temperature = response.data.main.temp;
 
   let city = response.data.name;
@@ -36,7 +33,6 @@ function displayWeatherCondition(response) {
   let temperatureValue = Math.round(temperature);
   temperatureElement.innerHTML = temperatureValue + "°";
   let iconElement = document.querySelector("#icon");
-  console.log(iconElement);
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
@@ -67,13 +63,9 @@ function handleSearch(event) {
   event.preventDefault();
   let city = document.querySelector(".cityform").value;
   search(city);
-  console.log(city);
 }
 
 function searchLocation(position) {
-  console.log(position);
-  console.log(position.coords.latitude);
-  console.log(position.coords.longitude);
   let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherCondition);
@@ -94,9 +86,7 @@ function formatDay(timestamp) {
 
 function displayForecast(response) {
   let forecast = response.data.daily;
-
   let forecastElement = document.querySelector("#forecast");
-
   let forecastHtml = "";
   forecast.forEach(function (forecastDay, index) {
     if (index < 6) {
@@ -117,45 +107,6 @@ function displayForecast(response) {
         `;
     }
   });
-  // forecastHtml =
-  //   forecastHtml +
-  //   `
-  //       <div class="card text-center">
-  //         <img src="images/cloundy.svg" class="card-img-top" alt="..." />
-  //         <div class="card-body">
-  //           <h5 class="card-title">Tue</h5>
-  //           <p class="card-text">3°/<strong>6°</strong></p>
-  //         </div>
-  //       </div>
-  //       <div class="card text-center">
-  //         <img src="images/sunny.svg" class="card-img-top" alt="..." />
-  //         <div class="card-body">
-  //           <h5 class="card-title">Wed</h5>
-  //           <p class="card-text">2°/<strong>5°</strong></p>
-  //         </div>
-  //       </div>
-  //       <div class="card text-center">
-  //         <img src="images/sunny.svg" class="card-img-top" alt="..." />
-  //         <div class="card-body">
-  //           <h5 class="card-title">Thu</h5>
-  //           <p class="card-text">1°/<strong>5°</strong></p>
-  //         </div>
-  //       </div>
-  //       <div class="card text-center">
-  //         <img src="images/cloundy.svg" class="card-img-top" alt="..." />
-  //         <div class="card-body">
-  //           <h5 class="card-title">Fri</h5>
-  //           <p class="card-text">1°/<strong>4°</strong></p>
-  //         </div>
-  //       </div>
-  //       <div class="card text-center">
-  //         <img src="images/snowing.svg" class="card-img-top" alt="..." />
-  //         <div class="card-body">
-  //           <h5 class="card-title">Sat</h5>
-  //           <p class="card-text">-1°/<strong>3°</strong></p>
-  //         </div>
-  //       </div>
-  // `;
   forecastElement.innerHTML = forecastHtml;
 }
 
