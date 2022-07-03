@@ -94,6 +94,66 @@ function displayCelsiusTemperature(event) {
   btnCelsius.disabled = true;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHtml = "";
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+        <div class="card text-center">
+          <img src="images/cloundy.svg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">${day}</h5>
+            <p class="card-text">3°/<strong>6°</strong></p>
+          </div>
+        </div>
+        `;
+  });
+  // forecastHtml =
+  //   forecastHtml +
+  //   `
+  //       <div class="card text-center">
+  //         <img src="images/cloundy.svg" class="card-img-top" alt="..." />
+  //         <div class="card-body">
+  //           <h5 class="card-title">Tue</h5>
+  //           <p class="card-text">3°/<strong>6°</strong></p>
+  //         </div>
+  //       </div>
+  //       <div class="card text-center">
+  //         <img src="images/sunny.svg" class="card-img-top" alt="..." />
+  //         <div class="card-body">
+  //           <h5 class="card-title">Wed</h5>
+  //           <p class="card-text">2°/<strong>5°</strong></p>
+  //         </div>
+  //       </div>
+  //       <div class="card text-center">
+  //         <img src="images/sunny.svg" class="card-img-top" alt="..." />
+  //         <div class="card-body">
+  //           <h5 class="card-title">Thu</h5>
+  //           <p class="card-text">1°/<strong>5°</strong></p>
+  //         </div>
+  //       </div>
+  //       <div class="card text-center">
+  //         <img src="images/cloundy.svg" class="card-img-top" alt="..." />
+  //         <div class="card-body">
+  //           <h5 class="card-title">Fri</h5>
+  //           <p class="card-text">1°/<strong>4°</strong></p>
+  //         </div>
+  //       </div>
+  //       <div class="card text-center">
+  //         <img src="images/snowing.svg" class="card-img-top" alt="..." />
+  //         <div class="card-body">
+  //           <h5 class="card-title">Sat</h5>
+  //           <p class="card-text">-1°/<strong>3°</strong></p>
+  //         </div>
+  //       </div>
+  // `;
+  forecastElement.innerHTML = forecastHtml;
+}
+
 let p = document.querySelector("p.timeupdate");
 
 p.innerHTML = currentDayTime();
@@ -113,3 +173,4 @@ let btnCelsius = document.querySelector("#btnCelsius");
 btnCelsius.addEventListener("click", displayCelsiusTemperature);
 
 search("Copenhagen");
+displayForecast();
