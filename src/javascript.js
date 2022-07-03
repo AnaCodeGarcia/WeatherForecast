@@ -29,8 +29,6 @@ function displayWeatherCondition(response) {
   console.log(response);
   let temperature = response.data.main.temp;
 
-  celsiusTemperature = temperature;
-
   let city = response.data.name;
   let cityElement = document.querySelector("h1");
   cityElement.innerHTML = city;
@@ -83,25 +81,6 @@ function searchLocation(position) {
 function handleCurrent(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchLocation);
-}
-
-function displayFahrenheitTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector(".temperature");
-  let fahrenheitValue = celsiusTemperature * (9 / 5) + 32;
-  console.log("Fahrenheit Temperature: " + fahrenheitValue);
-  temperatureElement.innerHTML = Math.round(fahrenheitValue);
-  btnFahrenheit.disabled = true;
-  btnCelsius.disabled = false;
-}
-
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector(".temperature");
-  console.log("Celsius temperature; " + celsiusTemperature);
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-  btnFahrenheit.disabled = false;
-  btnCelsius.disabled = true;
 }
 
 function formatDay(timestamp) {
@@ -183,18 +162,10 @@ let p = document.querySelector("p.timeupdate");
 
 p.innerHTML = currentDayTime();
 
-let celsiusTemperature = null;
-
 let btnSearch = document.querySelector("#btnSearch");
 btnSearch.addEventListener("click", handleSearch);
 
 let btnCurrent = document.querySelector("#btnCurrent");
 btnCurrent.addEventListener("click", handleCurrent);
-
-let btnFahrenheit = document.querySelector("#btnFarenheit");
-btnFahrenheit.addEventListener("click", displayFahrenheitTemperature);
-
-let btnCelsius = document.querySelector("#btnCelsius");
-btnCelsius.addEventListener("click", displayCelsiusTemperature);
 
 search("Copenhagen");
