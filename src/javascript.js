@@ -104,25 +104,38 @@ function displayCelsiusTemperature(event) {
   btnCelsius.disabled = true;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
 
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHtml = "";
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHtml =
+        forecastHtml +
+        `
         <div class="card text-center">
-          <img src="images/cloundy.svg" class="card-img-top" alt="..." />
+          <img src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png" class="card-img-top" alt="..." />
           <div class="card-body">
-            <h5 class="card-title">${day}</h5>
-            <p class="card-text">3°/<strong>6°</strong></p>
+            <h5 class="card-title">${formatDay(forecastDay.dt)}</h5>
+            <p class="card-text">${Math.round(
+              forecastDay.temp.min
+            )}°/<strong>${Math.round(forecastDay.temp.max)}°</strong></p>
           </div>
         </div>
         `;
+    }
   });
   // forecastHtml =
   //   forecastHtml +
