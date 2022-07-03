@@ -33,7 +33,8 @@ function displayWeatherCondition(response) {
   let cityElement = document.querySelector("h1");
   cityElement.innerHTML = city;
   let temperatureElement = document.querySelector("h2");
-  temperatureElement.innerHTML = Math.round(temperature);
+  let temperatureValue = Math.round(temperature);
+  temperatureElement.innerHTML = temperatureValue + "°";
   let iconElement = document.querySelector("#icon");
   console.log(iconElement);
   iconElement.setAttribute(
